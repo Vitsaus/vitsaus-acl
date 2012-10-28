@@ -43,6 +43,16 @@ describe('acl', function() {
 		expect(result).toBe(true);		
 	});
 
+	it('should not add rule because role does not exist', function() {
+		var result = acl.allow('missing-role', 'user-model', ['login']);
+		expect(result).toBe(false);
+	});
+
+	it('should not add rule because resource does not exist', function() {
+		var result = acl.allow('guest', 'missing-resource', ['login']);
+		expect(result).toBe(false);		
+	});
+
 	it('should not add rule because rule exists', function() {
 		var result = acl.allow('guest', 'user-model', ['login']);
 		expect(result).toBe(false);
