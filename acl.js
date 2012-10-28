@@ -42,7 +42,9 @@ Acl.prototype.hasRole = function(role) {
 
 	this._validateFormat(role);
 
-	for (var i = 0; i < this._roles.length; i++) {
+	var i = 0;
+
+	for (; i < this._roles.length; i++) {
 
 		if(this._roles[i] == role) {
 
@@ -69,7 +71,9 @@ Acl.prototype.hasResource = function(resource) {
 
 	this._validateFormat(resource);
 
-	for (var i = 0; i < this._resources.length; i++) {
+	var i = 0;
+
+	for (; i < this._resources.length; i++) {
 
 		if(this._resources[i] == resource) {
 
