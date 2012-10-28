@@ -96,6 +96,14 @@ Acl.prototype.allow = function(role, resource, permissions) {
 		permissions = [permissions];
 	}
 
+	if(!this.hasRole(role)) {
+		return false;
+	}
+
+	if(!this.hasResource(resource)) {
+		return false;
+	}
+
 	var i = 0;	
 
 	for (; i < permissions.length; i++) {
