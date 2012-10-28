@@ -87,7 +87,7 @@ Acl.prototype.hasResource = function(resource) {
 
 }
 
-Acl.prototype.addRule = function(role, resource, permissions) {
+Acl.prototype.allow = function(role, resource, permissions) {
 
 	this._validateFormat(role);
 	this._validateFormat(resource);
@@ -155,7 +155,7 @@ Acl.prototype._hasRule = function(role, resource, permissions) {
 
 }
 
-Acl.prototype.hasAccess = function(role, resource, permissions) {
+Acl.prototype.isAllowed = function(role, resource, permissions) {
 
 	this._validateFormat(role);
 	this._validateFormat(resource);

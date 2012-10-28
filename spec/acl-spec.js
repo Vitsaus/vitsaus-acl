@@ -37,32 +37,32 @@ describe('acl', function() {
 	});
 
 	it('should add rules', function() {
-		var result = acl.addRule('guest', 'user-model', ['login']);
+		var result = acl.allow('guest', 'user-model', ['login']);
 		expect(result).toBe(true);
-		result = acl.addRule('guest', 'user-model', ['register']);
+		result = acl.allow('guest', 'user-model', ['register']);
 		expect(result).toBe(true);		
 	});
 
 	it('should not add rule because rule exists', function() {
-		var result = acl.addRule('guest', 'user-model', ['login']);
+		var result = acl.allow('guest', 'user-model', ['login']);
 		expect(result).toBe(false);
 	});
 
 	it('should not add rule because of invalid role format', function() {
 		expect(function() {
-			acl.addRule('guest_', 'user-model', ['login']);
+			acl.allow('guest_', 'user-model', ['login']);
 		}).toThrow(acl._messages.exception.invalidFormat);
 	});
 
 	it('should not add rule because of invalid resource format', function() {
 		expect(function() {
-			acl.addRule('guest', 'user-model_', ['login']);
+			acl.allow('guest', 'user-model_', ['login']);
 		}).toThrow(acl._messages.exception.invalidFormat);
 	});	
 
 	it('should not add rule because of invalid permission format', function() {
 		expect(function() {
-			acl.addRule('guest', 'user-model_', ['login', 'logout_']);
+			acl.allow('guest', 'user-model_', ['login', 'logout_']);
 		}).toThrow(acl._messages.exception.invalidFormat);
 	});	
 
@@ -77,12 +77,12 @@ describe('acl', function() {
 	});
 
 	it('should have access', function() {
-		var result = acl.hasAccess('guest', 'user-model', ['login']);
+		var result = acl.isAllowed('guest', 'user-model', ['login']);
 		expect(result).toBe(true);
 	});
 
 	it('should not have access', function() {
-		var result = acl.hasAccess('guest', 'user-model', ['logout']);
+		var result = acl.isAllowed('guest', 'user-model', ['logout']);
 		expect(result).toBe(false);		
 	});
 
