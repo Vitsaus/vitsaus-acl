@@ -6,6 +6,6 @@
     "node":">= 0.7.0"
   },
   "dependencies": {
-    "jasmine-node": "*"
+    "jasmine-node": "1.0"
   }
 }

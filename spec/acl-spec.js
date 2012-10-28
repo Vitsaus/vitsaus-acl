@@ -36,7 +36,7 @@ describe('acl', function() {
 		expect(result).toBe(true);
 	});
 
-	it('should add rules', function() {
+	it('should add multiple rules', function() {
 		var result = acl.allow('guest', 'user-model', ['login']);
 		expect(result).toBe(true);
 		result = acl.allow('guest', 'user-model', ['register']);
